@@ -24,13 +24,6 @@ items = soup.select(items_selector)
 for item in items:
     title = item[string_selector]
 
-    name, version = title.split()
-    if '-' in version:
-        version, sub = version.split('-')
-    else:
-        sub = ''
-    major, minor, rev = version.split('.')
-
     match = re.match(regex, title)
     name, major, minor, rev, sub = match.groups()
 
