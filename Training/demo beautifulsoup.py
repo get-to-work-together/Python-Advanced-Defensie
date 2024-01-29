@@ -4,7 +4,12 @@ import re
 import requests
 from bs4 import BeautifulSoup
 
+# Kibana
 url = 'https://www.elastic.co/guide/en/kibana/current/release-notes.html'
+items_selector = 'li.listitem a'
+string_selector = 'title'
+regex = r'^(\w+) (\d+)\.(\d+)\.(\d+)-?(.*)$'
+
 
 r = requests.get(url)
 
@@ -14,12 +19,10 @@ if r.status_code != 200:
 
 soup = BeautifulSoup(r.text, features="html.parser")
 
-div = soup.find('div', class_ = 'ulist itemizedlist')
-ul = div.find('ul', class_ = 'itemizedlist')
-li = ul.find_all('li', class_ = 'listitem')
+items = soup.select(items_selector)
 
-for item in li:
-    title = item.find('a')['title']
+for item in items:
+    title = item[string_selector]
 
     name, version = title.split()
     if '-' in version:
@@ -28,7 +31,7 @@ for item in li:
         sub = ''
     major, minor, rev = version.split('.')
 
-    match = re.match(f'^(\w+) (\d+)\.(\d+)\.(\d+)-?(.*)$', title)
+    match = re.match(regex, title)
     name, major, minor, rev, sub = match.groups()
 
     print(name, major, minor, rev, sub)
