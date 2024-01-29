@@ -21,3 +21,20 @@
 * Data format - database structuur
 * Features
 * UI
+
+---
+
+* Interface welke applicatie
+* URL
+* CVE database - https://cve.mitre.org
+* pyExploitDb testen
+* html vs api
+* detail niveau afhankelijk van applicatie
+* Voorbeelden: 
+  * Confluence actuele versie https://confluence.atlassian.com/doc/confluence-release-notes-327.html
+  * Kibana https://www.elastic.co/guide/en/kibana/current/release-notes.html
+* database schema
+  * huidige naam
+  * huidige versie
+  * url
+  * xml path?
