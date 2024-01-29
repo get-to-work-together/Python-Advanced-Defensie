@@ -1,26 +1,13 @@
 import sys
 import re
+import json
 
 import requests
 from bs4 import BeautifulSoup
 
-# Kibana
-url = 'https://www.elastic.co/guide/en/kibana/current/release-notes.html'
-items_selector = 'li.listitem a'
-string_selector = 'title'
-regex = r'^(\w+) (\d+)\.(\d+)\.(\d+)-?(.*)$'
-
-# Kibana Guides
-url = 'https://www.elastic.co/guide/en/kibana/index.html'
-items_selector = 'li.listitem a'
-string_selector = None
-regex = r'^(.*): *(\d+)\.(\d+)\.?(\d*)[- ]?(.*)$'
-
-# Confluence Release Notes
-url = 'https://confluence.atlassian.com/doc/confluence-release-notes-327.html'
-items_selector = 'div.content-section ul li a'
-string_selector = None
-regex = r'^(Confluence) (\d+)\.(\d+)\.?(\d*) ?(.*)$'
+filename = 'config.json'
+with open(filename) as f:
+    config = json.load(f)
 
 
 r = requests.get(url)
@@ -44,5 +31,13 @@ for item in items:
     if match:
         name, major, minor, rev, sub = match.groups()
 
-        print(name, major, minor, rev, sub)
+        if current_version:
+            if len(current_version) == 1 and (major, ) == current_version:
+                print(name, major, minor, rev, sub)
+            elif len(current_version) == 2 and (major, minor) == current_version:
+                print(name, major, minor, rev, sub)
+            elif len(current_version) == 3 and (major, minor, rev) == current_version:
+                print(name, major, minor, rev, sub)
+        else:
+            print(name, major, minor, rev, sub)
 

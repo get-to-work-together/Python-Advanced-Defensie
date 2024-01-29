@@ -1,0 +1,29 @@
+[
+  {
+    "Kibana Release Notes": {
+      "url": "https://www.elastic.co/guide/en/kibana/current/release-notes.html",
+      "items_selector": "li.listitem a",
+      "string_selector": "title",
+      "regex": "^(\\w+) (\\d+)\\.(\\d+)\\.(\\d+)-?(.*)$",
+      "current_version": null
+    }
+  },
+  {
+    "Kibana Guides": {
+      "url": "https://www.elastic.co/guide/en/kibana/index.html",
+      "items_selector": "li.listitem a",
+      "string_selector": null,
+      "regex": "^(.*): *(\\d+)\\.(\\d+)\\.?(\\d*)[- ]?(.*)$",
+      "current_version": []
+    }
+  },
+  {
+    "Confluence Release Notes": {
+      "url": "https://confluence.atlassian.com/doc/confluence-release-notes-327.html",
+      "items_selector": "div.content-section ul li a",
+      "string_selector": null,
+      "regex": "^(Confluence) (\\d+).(\\d+).?(\\d*) ?(.*)$",
+      "current_version": ["7", "19"]
+    }
+  }
+]
