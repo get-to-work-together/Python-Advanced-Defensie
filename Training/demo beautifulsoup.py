@@ -5,6 +5,15 @@ import json
 import requests
 from bs4 import BeautifulSoup
 
+def version_to_str(major, minor, rev):
+    s = str(major)
+    if minor:
+        s += '.' + str(minor)
+    if rev:
+        s += '.' + str(rev)
+    return s
+
+
 filename = 'config.json'
 with open(filename) as f:
     config_list = json.load(f)
@@ -21,7 +30,7 @@ for config in config_list:
 
     if r.status_code != 200:
         print(f'Could not get open {url}')
-        sys.exit()
+        continue
 
     soup = BeautifulSoup(r.text, features="html.parser")
 
@@ -43,11 +52,11 @@ for config in config_list:
 
             if current_version:
                 if len(current_version) == 1 and (major, ) == current_version:
-                    print(name, major, minor, rev, sub)
+                    print(name, version_to_str(major, minor, rev), sub)
                 elif len(current_version) == 2 and (major, minor) == current_version:
-                    print(name, major, minor, rev, sub)
+                    print(name, version_to_str(major, minor, rev), sub)
                 elif len(current_version) == 3 and (major, minor, rev) == current_version:
-                    print(name, major, minor, rev, sub)
+                    print(name, version_to_str(major, minor, rev), sub)
             else:
-                print(name, major, minor, rev, sub)
+                print(name, version_to_str(major, minor, rev), sub)
 
