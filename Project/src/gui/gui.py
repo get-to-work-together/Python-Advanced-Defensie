@@ -7,6 +7,8 @@ class ListFrame(tk.Frame):
     def __init__(self, master):
         super().__init__()
 
+        self.master = master
+
         w = tk.Label(master, text='LIST')
         w.grid(row=0, column=0)
 
@@ -24,6 +26,8 @@ class DetailFrame(tk.Frame):
 
     def __init__(self, master):
         super().__init__(master)
+
+        self.master = master
 
         w = tk.Label(master, text='Name')
         w.grid(row=0, column=0)
@@ -61,20 +65,18 @@ class App(tk.Frame):
 
         self.detail = DetailFrame(self)
         self.detail.grid(column=0, row=0, sticky='news')
-        # self.detail.grid()
-        # self.detail.pack()
 
         self.list = ListFrame(self)
         self.list.grid(column=0, row=0, sticky='news')
-        # self.list.grid()
-        # self.list.pack()
 
         self.show_detail()
 
     def show_detail(self):
+        self.list.forget()
         self.detail.tkraise()
 
     def show_list(self):
+        self.detail.forget()
         self.list.tkraise()
 
 
