@@ -5,6 +5,7 @@ import json
 import requests
 from bs4 import BeautifulSoup
 
+
 def version_to_str(major, minor, rev):
     s = str(major)
     if minor:

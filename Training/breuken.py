@@ -2,6 +2,7 @@
 class NoemerIsNullError(Exception):
     pass
 
+
 class Breuk:
 
     def __init__(self, teller, noemer):
