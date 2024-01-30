@@ -6,8 +6,8 @@ cache = {}  # global !!!
 def throtle(f):
 
     def wrapper(*args, **kwargs):
-        duration = 60 * 60 * 24     # in seconds
-        duration = 60    # in seconds
+        hours = 24
+        duration = 60 * 60 * hours     # in seconds
 
         global cache
 
