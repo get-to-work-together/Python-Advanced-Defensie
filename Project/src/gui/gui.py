@@ -1,6 +1,7 @@
 import tkinter as tk
 import customtkinter as ctk
 
+from Project.src.database.persistence import save_application_record
 
 class ListFrame(tk.Frame):
 
@@ -55,6 +56,7 @@ class DetailFrame(tk.Frame):
         print('cancel')
 
     def handle_save(self):
+        save_application_record(self.name.get(), self.version.get())
         print('save', self.name.get(), self.version.get())
 
 
