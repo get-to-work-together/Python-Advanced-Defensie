@@ -1,3 +1,4 @@
+from datetime import datetime
 import time
 import pickle
 
@@ -5,9 +6,12 @@ cache = {}  # global !!!
 def throtle(f):
 
     def wrapper(*args, **kwargs):
+        duration = 60 * 60 * 24     # in seconds
+
         global cache
 
         print(f.__name__, args, kwargs)
+
 
         if not cache:
             try:
@@ -17,9 +21,17 @@ def throtle(f):
                 cache = {}
 
         key = (f.__name__,) + args
-        return_value = cache.get(key, f(*args, **kwargs))
 
-        cache[key] = return_value
+        if key in cache.keys():
+            timestamp, return_value = cache[key]
+            if (datetime.now() - timestamp).seconds > duration:
+                timestamp = datetime.now()
+                return_value = f(*args, **kwargs)
+                cache[key] = (timestamp, return_value)
+        else:
+            timestamp = datetime.now()
+            return_value = f(*args, **kwargs)
+            cache[key] = (timestamp, return_value)
 
         with open('cache.pickle', 'wb') as fh:
             pickle.dump(cache, fh)
