@@ -25,9 +25,33 @@ class DetailFrame(tk.Frame):
     def __init__(self, master):
         super().__init__(master)
 
-        w = tk.Label(master, text='DETAIL')
+        w = tk.Label(master, text='Name')
         w.grid(row=0, column=0)
-        # w.pack()
+
+        self.name = tk.StringVar()
+
+        w = tk.Entry(master, textvariable=self.name)
+        w.grid(row=0, column=1)
+
+        w = tk.Label(master, text='Version')
+        w.grid(row=1, column=0)
+
+        self.version = tk.StringVar()
+
+        w = tk.Entry(master, textvariable=self.version)
+        w.grid(row=1, column=1)
+
+        w = tk.Button(master, text='Cancel', command=self.handle_cancel)
+        w.grid(row=2, column=0)
+
+        w = tk.Button(master, text='Save', command=self.handle_save)
+        w.grid(row=2, column=1)
+
+    def handle_cancel(self):
+        print('cancel')
+
+    def handle_save(self):
+        print('save', self.name.get(), self.version.get())
 
 
 class App(tk.Frame):
