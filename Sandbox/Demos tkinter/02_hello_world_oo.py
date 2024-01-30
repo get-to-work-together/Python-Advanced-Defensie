@@ -13,9 +13,11 @@ class App(tk.Frame):
         w = tk.Label(master, text="Derde", fg='GREEN')
         w.grid(row = 1, column = 1)
 
-
-        w = tk.Button(master, text="Klik hier!")
+        w = tk.Button(master, text="Klik hier!", command = self.doe_iets)
         w.grid(row=2, column=1)
+
+    def doe_iets(self):
+        print('Hoi')
 
 if __name__ == '__main__':
 
