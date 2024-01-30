@@ -7,11 +7,11 @@ def throtle(f):
 
     def wrapper(*args, **kwargs):
         duration = 60 * 60 * 24     # in seconds
+        duration = 60    # in seconds
 
         global cache
 
         print(f.__name__, args, kwargs)
-
 
         if not cache:
             try:
