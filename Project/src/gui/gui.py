@@ -33,7 +33,6 @@ class ListFrame(ctk.CTkFrame):
         self.master.show_detail()
 
     def handle_remove(self):
-        pass
         index = self.list.curselection()[0]
         id, name, version = self.applications.get()[index]
         persistence.remove_application_record(name)
