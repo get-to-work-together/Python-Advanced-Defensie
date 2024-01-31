@@ -34,11 +34,10 @@ class ListFrame(ctk.CTkFrame):
 
     def handle_remove(self):
         pass
-        # index = self.users_list.curselection()[0]
-        # user_name = self.user_names.get()[index]
-        # persistence = Persistence()
-        # persistence.remove_user(user_name)
-        # self.users_list.delete(index)
+        index = self.list.curselection()[0]
+        id, name, version = self.applications.get()[index]
+        persistence.remove_application_record(name)
+        self.list.delete(index)
 
     def update_list(self):
         applications = persistence.get_all_application_records()

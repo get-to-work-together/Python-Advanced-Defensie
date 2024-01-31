@@ -11,7 +11,7 @@ def save_application_record(name, version):
     connection.commit()
     connection.close()
 
-    
+
 def get_all_application_records():
     sql = "SELECT * FROM applications"
     connection = sqlite3.connect(dbname)
@@ -21,8 +21,17 @@ def get_all_application_records():
     return result
 
 
+def remove_application_record(name):
+    sql = "DELETE FROM applications WHERE name = ?"
+    connection = sqlite3.connect(dbname)
+    connection.execute(sql, (name,))
+    connection.commit()
+    connection.close()
+
+
 # -----
 
 if __name__ ==  '__main__':
     # save_application_record('XXX', 'Version 3')
+    remove_application_record('XXX')
     print(get_all_application_records())
