@@ -23,6 +23,25 @@ def hello(name):
 def delete(name):
     return f'<h1>DELETING RESOURCE {name}!</h1>'
 
+@app.route('/names', methods=['get'])
+def get_names():
+    return f'''\
+    <form method="post">
+        <input type="text" name="name">
+        <input type="submit">
+    </form>
+    '''
+
+@app.route('/names', methods=['post'])
+def add_name():
+    name = flask.request.form['name']
+    return f'<h1>ADDING RESOURCE {name}!</h1>'
+
+@app.route('/index', methods=['get'])
+def index():
+    return flask.render_template('index.html')
+
+
 
 
 if __name__ == '__main__':
