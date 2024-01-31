@@ -1,7 +1,10 @@
 import tkinter as tk
 import customtkinter as ctk
 
+from Project.src.database import persistence
+
 from Project.src.database.persistence import save_application_record
+from Project.src.database.persistence import get_all_application_records
 
 class ListFrame(ctk.CTkFrame):
 
@@ -14,9 +17,9 @@ class ListFrame(ctk.CTkFrame):
 
         applications = []
         self.applications = tk.Variable(value=applications)
-        self.users_list = tk.Listbox(self, listvariable = self.applications)
-        # self.update_list()
-        self.users_list.grid(row=1, column=0, columnspan=2)
+        self.list = tk.Listbox(self, listvariable = self.applications)
+        self.update_list()
+        self.list.grid(row=1, column=0, columnspan=2)
 
         kwargs = {'padx':20, 'pady':20}
 
@@ -38,11 +41,9 @@ class ListFrame(ctk.CTkFrame):
         # self.users_list.delete(index)
 
     def update_list(self):
-        pass
-        # persistence = Persistence()
-        # user_names = persistence.get_user_names()
-        # self.users_list.delete(0, tk.END)
-        # self.users_list.insert(0, *user_names)
+        applications = persistence.get_all_application_records()
+        self.list.delete(0, tk.END)
+        self.list.insert(0, *applications)
 
 
 class DetailFrame(ctk.CTkFrame):
@@ -82,7 +83,7 @@ class DetailFrame(ctk.CTkFrame):
         self.master.show_list()
 
     def handle_save(self):
-        save_application_record(self.name.get(), self.version.get())
+        persistence.save_application_record(self.name.get(), self.version.get())
         self.master.show_list()
 
 
@@ -97,13 +98,14 @@ class App(ctk.CTkFrame):
         self.list = ListFrame(self)
         self.list.grid(column=0, row=0, sticky='nwse')
 
-        self.show_detail()
+        self.show_list()
 
     def show_detail(self):
         self.list.forget()
         self.detail.tkraise()
 
     def show_list(self):
+        self.list.update_list()
         self.detail.forget()
         self.list.tkraise()
 
