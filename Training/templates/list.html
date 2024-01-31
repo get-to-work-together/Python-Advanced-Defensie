@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LIJST van namen</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <h1>LIJST van namen:</h1>
+    <ul>
+        {% for name in names %}
+            <li>{{ name }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

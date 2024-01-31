@@ -1,6 +1,9 @@
 import flask
 
-app = flask.Flask(__name__)
+app = flask.Flask(__name__,
+                  template_folder='templates',
+                  static_url_path='',
+                  static_folder='static')
 
 
 @app.route('/')
@@ -31,7 +34,6 @@ def get_names():
         <input type="submit">
     </form>
     '''
-
 @app.route('/names', methods=['post'])
 def add_name():
     name = flask.request.form['name']
@@ -39,8 +41,13 @@ def add_name():
 
 @app.route('/index', methods=['get'])
 def index():
-    return flask.render_template('index.html')
+    name = flask.request.args.get('name', 'unknown')
+    return flask.render_template('index.html', name = name)
 
+@app.route('/list')
+def list_of_names():
+    names = ['Gert','Jan','Timo','Bernd','Maarten','Maurice','Wesley','Lloyd','Egbert','Vincent']
+    return flask.render_template('list.html', names = names)
 
 
 
