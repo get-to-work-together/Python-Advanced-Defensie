@@ -8,9 +8,19 @@
 <body>
     <h1>Lijst van Applicaties</h1>
     <table>
-        <thead><td>name</td><td>major</td><td>minor</td><td>rev</td></thead>
-        {% for name, major, minor, rev in applications %}
-            <tr><td>{{ name }}</td><td>{{ major }}</td><td>{{ minor }}</td><td>{{ rev }}</td></tr>
+        <thead><td>Application</td><td colspan="3">Current</td><td colspan="4">New</td></thead>
+        <thead><td>name</td><td>major</td><td>minor</td><td>rev</td><td>major</td><td>minor</td><td>rev</td><td>sub</td></thead>
+        {% for name, major, minor, rev, new_major, new_minor, new_rev, new_sub in applications %}
+            <tr>
+                <td>{{ name }}</td>
+                <td>{{ major }}</td>
+                <td>{{ minor }}</td>
+                <td>{{ rev }}</td>
+                <td>{{ new_major if new_major else '' }}</td>
+                <td>{{ new_minor if new_minor else '' }}</td>
+                <td>{{ new_rev if new_rev else '' }}</td>
+                <td style="width:8em;">{{ new_sub if new_sub else '' }}</td>
+            </tr>
         {% endfor %}
     </table>
 </body>

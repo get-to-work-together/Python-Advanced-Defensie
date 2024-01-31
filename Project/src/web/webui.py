@@ -1,6 +1,6 @@
 import flask
 from Project.src.database import persistence
-from Project.src.utils.applications import get_applications
+from Project.src.utils.applications import get_applications, get_updateble_applications
 
 
 app = flask.Flask(__name__,
@@ -16,7 +16,7 @@ def home():
 
 @app.route('/list')
 def applications_list():
-    applications = get_applications()
+    applications = list(get_updateble_applications())
     return flask.render_template('list.html', applications = applications)
 
 

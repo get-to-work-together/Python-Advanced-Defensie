@@ -6,14 +6,15 @@ table {
     background: pink;
 }
 thead td {
-    background: lightgreen;
+    background: purple;
+    color: white;
 }
 tr:nth-child(odd) {
     background: white;
 }
 td {
     border: 1px solid darkgray;
-    padding: 6px;
+    padding: 4px 6px;
     text-align: right;
     width: 4em;
 }

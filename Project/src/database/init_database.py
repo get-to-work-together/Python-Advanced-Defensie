@@ -19,8 +19,8 @@ def create_table():
 def fill_database():
     connection = sqlite3.connect(dbname)
 
-    connection.execute("INSERT INTO applications (name, version) VALUES ('Kibana', '17.8.1')")
-    connection.execute("INSERT INTO applications (name, version) VALUES ('Confluence', '7.2')")
+    connection.execute("INSERT INTO applications (name, version) VALUES ('Kibana', '8.9.1')")
+    connection.execute("INSERT INTO applications (name, version) VALUES ('Confluence', '7.18')")
 
     connection.commit()
 
@@ -40,6 +40,7 @@ def read_database():
 
 # --------------------------
 
-# create_table()
-fill_database()
-read_database()
+if __name__ == '__main__':
+    create_table()
+    fill_database()
+    read_database()
