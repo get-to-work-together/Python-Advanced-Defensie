@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lijst van Applicaties</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <h1>Lijst van Applicaties</h1>
+    <ul>
+        {% for name in applications %}
+            <li>{{ name }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
