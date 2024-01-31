@@ -7,10 +7,11 @@
 </head>
 <body>
     <h1>Lijst van Applicaties</h1>
-    <ul>
-        {% for name in applications %}
-            <li>{{ name }}</li>
+    <table>
+        <thead><td>name</td><td>major</td><td>minor</td><td>rev</td></thead>
+        {% for name, major, minor, rev in applications %}
+            <tr><td>{{ name }}</td><td>{{ major }}</td><td>{{ minor }}</td><td>{{ rev }}</td></tr>
         {% endfor %}
-    </ul>
+    </table>
 </body>
 </html>

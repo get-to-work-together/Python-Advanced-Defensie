@@ -1,5 +1,6 @@
 import flask
 from Project.src.database import persistence
+from Project.src.utils.applications import get_applications
 
 
 app = flask.Flask(__name__,
@@ -15,7 +16,7 @@ def home():
 
 @app.route('/list')
 def applications_list():
-    applications = persistence.get_all_application_records()
+    applications = get_applications()
     return flask.render_template('list.html', applications = applications)
 
 

@@ -1,1 +1,14 @@
 * { color: purple; }
+
+table {
+    border-collapse: collapse;
+    border: 2px solid darkgray;
+    background: pink;
+}
+tr:nth-child(odd) {
+    background: white;
+}
+td {
+    border: 1px solid darkgray;
+    padding: 6px;
+}
