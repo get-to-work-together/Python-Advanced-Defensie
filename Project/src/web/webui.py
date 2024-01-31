@@ -1,4 +1,6 @@
 import flask
+from Project.src.database import persistence
+
 
 app = flask.Flask(__name__,
                   template_folder='templates',
@@ -13,8 +15,7 @@ def home():
 
 @app.route('/list')
 def applications_list():
-    applications = [('Kibana', 7, 19, None),
-                    ('Confluence', 17, 1, 23)]
+    applications = persistence.get_all_application_records()
     return flask.render_template('list.html', applications = applications)
 
 
