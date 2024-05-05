@@ -1,5 +1,9 @@
 
 
+def example(arg1, arg2, /, *args, kwarg1 = None, **kwargs):
+    pass
+
+
 def minimum_maximum(*getallen):
     minimum = getallen[0]
     maximum = getallen[0]
