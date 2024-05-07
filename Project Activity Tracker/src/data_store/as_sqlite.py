@@ -15,6 +15,7 @@ filename = 'data.db'
 def create_table():
     sql = """\
 CREATE TABLE IF NOT EXISTS activities (
+    id INTEGER PRIMARY KEY,
     name VARCHAR(50),
     activity_type VARCHAR(50),
     date_due DATE,
@@ -40,6 +41,21 @@ def store_activity(activity):
     conn = sqlite3.connect(full_path)
     cur = conn.cursor()
 
+    fields = (
+        # 'id',
+        'name',
+        'activity_type',
+        'date_due',
+        'note',
+        'duration',
+        'object_id',
+        'object_name',
+        'assigned_to',
+        'date_entered',
+        'status',
+        'date_updated'
+    )
+
     values = (
         activity._name,
         activity._activity_type,
@@ -53,7 +69,7 @@ def store_activity(activity):
         activity._status,
         activity._date_updated
     )
-    sql = "INSERT INTO activities VALUES (?,?,?,?,?,?,?,?,?,?,?);"
+    sql = f"INSERT INTO activities ({','.join(fields)}) VALUES (?,?,?,?,?,?,?,?,?,?,?);"
     cur.execute(sql, values)
 
     conn.commit()

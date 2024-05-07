@@ -10,26 +10,6 @@ from dataclasses import dataclass
 from typing import List
 
 
-# @dataclass   # creates __init__ and __repr__
-# class Activity:
-#     name: str
-#     activity_type: str
-#     date_due: date | str = None
-#     days_due: int = None
-#     note: str = None
-#     duration: int = 0
-#     object_id: str = None
-#     object_name: str = None
-#     assigned_to: str = None
-#     date_entered: date | str = None
-#     status: str = 'open'
-#     date_updated: date | str = None
-#
-#     def info(self):
-#         return f'{self.activity_type} - {self.name} | due: {self.date_due} status: {self.status} on {self.date_updated}'
-
-
-
 
 class Activity:
 
