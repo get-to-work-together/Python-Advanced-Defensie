@@ -6,6 +6,30 @@ from utils.utils import to_date
 
 from datetime import date, datetime, timedelta
 
+from dataclasses import dataclass
+from typing import List
+
+
+# @dataclass   # creates __init__ and __repr__
+# class Activity:
+#     name: str
+#     activity_type: str
+#     date_due: date | str = None
+#     days_due: int = None
+#     note: str = None
+#     duration: int = 0
+#     object_id: str = None
+#     object_name: str = None
+#     assigned_to: str = None
+#     date_entered: date | str = None
+#     status: str = 'open'
+#     date_updated: date | str = None
+#
+#     def info(self):
+#         return f'{self.activity_type} - {self.name} | due: {self.date_due} status: {self.status} on {self.date_updated}'
+
+
+
 
 class Activity:
 
@@ -54,7 +78,20 @@ class Activity:
 
     @classmethod
     def from_dict(cls, d):
+        return cls(**d)
+
+    @staticmethod
+    def from_dict(d):
         return Activity(**d)
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, value: str):
+        self._name = value.title()
+
 
     def update(self, status, note = None):
         self._status = status
@@ -80,4 +117,7 @@ if __name__ == '__main__':
                         date_due = '2024-05-10')
 
     print(activity.info())
+
+    activity.name = 'hacked by peter'
+    print(activity.name)
 

@@ -6,6 +6,7 @@ sys.path.append(r'/Users/peter/Computrain/_InCompany/Defensie/Python Advanced/Pr
 from models.activity import Activity
 
 
+
 class ActivityRepository:
 
     def __init__(self):

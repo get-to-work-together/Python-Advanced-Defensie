@@ -1,6 +1,4 @@
-2023-04-25T13:35:41.155 - root - DEBUG - This message should go to the log file
-2023-04-25T13:35:41.155 - root - INFO - So should this
-2023-04-25T13:35:41.155 - root - WARNING - And this, too
-2023-04-25T13:35:41.155 - root - ERROR - Watch out!
-2023-04-25T13:35:41.155 - root - CRITICAL - ERROR!!!!!
-2023-04-25T13:35:41.155 - root - ERROR - invalid literal for int() with base 10: 'one'
+2024-05-07T09:29:54.921 - In function: say_hi - args: Mathijs
+2024-05-07T09:29:54.921 - In function: say_hi - args: Joris
+2024-05-07T09:29:56.337 - In function: say_hi - args: Mathijs
+2024-05-07T09:29:56.337 - In function: say_hi - args: Joris
