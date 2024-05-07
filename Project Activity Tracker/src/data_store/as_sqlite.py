@@ -81,7 +81,36 @@ def store_repository(repository):
         store_activity(activity)
 
 def retrieve_repository():
-    ...
+    full_path = os.path.join(directory, filename)
+    conn = sqlite3.connect(full_path)
+    cur = conn.cursor()
+
+    fields = (
+        # 'id',
+        'name',
+        'activity_type',
+        'date_due',
+        'note',
+        'duration',
+        'object_id',
+        'object_name',
+        'assigned_to',
+        'date_entered',
+        'status',
+        'date_updated'
+    )
+
+    repository = ActivityRepository()
+    sql = f"SELECT {','.join(fields)} FROM activities;"
+    for row in cur.execute(sql):
+        d = dict(zip(fields, row))
+        activity = Activity(**d)
+        repository.add(activity)
+
+    conn.commit()
+    conn.close()
+
+    return repository
 
 
 
@@ -89,13 +118,13 @@ if __name__ == '__main__':
 
     # create_table()
 
-    repository = ActivityRepository()
+    # repository = ActivityRepository()
+    #
+    # repository.add(Activity('Testen', 'testen', date_due = date.today()))
+    # repository.add(Activity('Onderhoud', 'onderhoud', date_due = '2024-05-21'))
+    # repository.add(Activity('Retour', 'retour', days_due = 10))
+    #
+    # store_repository(repository)
 
-    repository.add(Activity('Testen', 'testen', date_due = date.today()))
-    repository.add(Activity('Onderhoud', 'onderhoud', date_due = '2024-05-21'))
-    repository.add(Activity('Retour', 'retour', days_due = 10))
-
-    store_repository(repository)
-
-    # repository = retrieve_repository()
-    # repository.print_all()
+    repository = retrieve_repository()
+    repository.print_all()
