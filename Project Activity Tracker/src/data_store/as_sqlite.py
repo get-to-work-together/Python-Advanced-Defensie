@@ -4,7 +4,7 @@ import sqlite3
 from datetime import date
 
 sys.path.append(r'/Users/peter/Computrain/_InCompany/Defensie/Python Advanced/Project Activity Tracker/src')
-from models.activity import Activity
+from models.activity import Activity, field_names
 from repository.repository import ActivityRepository
 
 
@@ -42,7 +42,7 @@ def store_activity(activity):
     cur = conn.cursor()
 
     fields = (
-        # 'id',
+        'id',
         'name',
         'activity_type',
         'date_due',
@@ -57,6 +57,7 @@ def store_activity(activity):
     )
 
     values = (
+        activity._id,
         activity._name,
         activity._activity_type,
         activity._date_due,
@@ -69,7 +70,7 @@ def store_activity(activity):
         activity._status,
         activity._date_updated
     )
-    sql = f"INSERT INTO activities ({','.join(fields)}) VALUES (?,?,?,?,?,?,?,?,?,?,?);"
+    sql = f"INSERT INTO activities ({','.join(fields)}) VALUES ({','.join(['?']*len(fields))});"
     cur.execute(sql, values)
 
     conn.commit()
@@ -86,7 +87,7 @@ def retrieve_repository():
     cur = conn.cursor()
 
     fields = (
-        # 'id',
+        'id',
         'name',
         'activity_type',
         'date_due',
@@ -128,3 +129,4 @@ if __name__ == '__main__':
 
     repository = retrieve_repository()
     repository.print_all()
+

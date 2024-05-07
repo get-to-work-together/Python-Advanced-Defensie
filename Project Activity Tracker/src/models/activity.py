@@ -9,7 +9,20 @@ from datetime import date, datetime, timedelta
 from dataclasses import dataclass
 from typing import List
 
-
+field_names = (
+    'id',
+    'name',
+    'activity_type',
+    'date_due',
+    'note',
+    'duration',
+    'object_id',
+    'object_name',
+    'assigned_to',
+    'date_entered',
+    'status',
+    'date_updated'
+)
 
 class Activity:
 
@@ -25,7 +38,8 @@ class Activity:
                  assigned_to: str = None,
                  date_entered: date|str = None,
                  status: str = 'open',
-                 date_updated: date|str = None):
+                 date_updated: date|str = None,
+                 id: int = None):
 
         self._name = name
         self._note = note
@@ -46,8 +60,11 @@ class Activity:
         self._status = status
         self._date_updated = to_date(date_updated)
 
+        self._id = id
+
+
     def info(self):
-        return f'{self._activity_type} - {self._name} | due: {self._date_due} status: {self._status} on {self._date_updated}'
+        return f'{self._id}: {self._activity_type} - {self._name} | due: {self._date_due} status: {self._status} on {self._date_updated}'
 
     def to_dict(self):
         d = {k[1:]: v if k.startswith('_') else k for k, v in self.__dict__.items()}
