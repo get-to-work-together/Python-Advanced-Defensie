@@ -1,4 +1,5 @@
 from ..data_store.as_sqlite import retrieve_repository
+from ..models.activity import field_names
 
 from flask import Flask, render_template, request, redirect, Response, make_response, jsonify
 
@@ -29,7 +30,21 @@ def get_user_by_name(name:str):             # url parameter
 def get_activities():
     repository = retrieve_repository()
     activities = repository.to_json()
-    return render_template('activities.html', status = 200, activities = activities)
+    return render_template('activities.html', status = 200, activities = activities, field_names = field_names)
+
+
+@app.route("/activities", methods=['PUT'])
+def update_activities():
+    repository = retrieve_repository()
+    activities = repository.to_json()
+    return render_template('activities.html', status = 200, activities = activities, field_names = field_names)
+
+
+@app.route("/activities", methods=['DELETE'])
+def delete_activities():
+    repository = retrieve_repository()
+    activities = repository.to_json()
+    return render_template('activities.html', status = 200, activities = activities, field_names = field_names)
 
 
 @app.route("/api/v1.0/activities", methods=['GET'])
