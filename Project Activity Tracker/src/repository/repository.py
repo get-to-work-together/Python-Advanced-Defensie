@@ -2,8 +2,11 @@ import sys
 import os
 from datetime import date
 
-sys.path.append(r'/Users/peter/Computrain/_InCompany/Defensie/Python Advanced/Project Activity Tracker/src')
-from models.activity import Activity
+try:
+    from ..models.activity import Activity
+except:
+    sys.path.append(r'/Users/peter/Computrain/_InCompany/Defensie/Python Advanced/Project Activity Tracker/src')
+    from models.activity import Activity
 
 
 

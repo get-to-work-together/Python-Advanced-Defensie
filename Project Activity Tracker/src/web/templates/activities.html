@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Activties</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+</head>
+<body>
+
+  <table>
+    {% for activity in activities %}
+    <tr>
+      <td>{{ activity.id }}</td>
+      <td>{{ activity.name }}</td>
+      <td>{{ activity.activity_type }}</td>
+      <td>{{ activity.date_due }}</td>
+      <td>{{ activity.note }}</td>
+      <td>{{ activity.duration }}</td>
+      <td>{{ activity.object_id }}</td>
+      <td>{{ activity.object_name }}</td>
+      <td>{{ activity.date_entered }}</td>
+      <td>{{ activity.status }}</td>
+      <td>{{ activity.date_updated }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+
+</body>
+</html>

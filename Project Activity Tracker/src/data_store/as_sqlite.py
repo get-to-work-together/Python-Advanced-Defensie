@@ -3,9 +3,13 @@ import os
 import sqlite3
 from datetime import date
 
-sys.path.append(r'/Users/peter/Computrain/_InCompany/Defensie/Python Advanced/Project Activity Tracker/src')
-from models.activity import Activity, field_names
-from repository.repository import ActivityRepository
+try:
+    from ..models.activity import Activity
+    from ..repository.repository import ActivityRepository
+except:
+    sys.path.append(r'/Users/peter/Computrain/_InCompany/Defensie/Python Advanced/Project Activity Tracker/src')
+    from models.activity import Activity, field_names
+    from repository.repository import ActivityRepository
 
 
 directory = r'/Users/peter/Computrain/_InCompany/Defensie/Python Advanced/Project Activity Tracker/data'

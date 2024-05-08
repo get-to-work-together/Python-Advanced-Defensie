@@ -43,13 +43,15 @@ def cache(f):
 
 
 def to_date(date_arg=None, date_format='%Y-%m-%d'):
-    if date_arg is None:
-        return date.today()
-    if isinstance(date_arg, date):
-        return date_arg
-    elif isinstance(date_arg, str):
-        return datetime.strptime(date_arg, date_format).date()
-
+    try:
+        if date_arg is None:
+            return date.today()
+        if isinstance(date_arg, date):
+            return date_arg
+        elif isinstance(date_arg, str):
+            return datetime.strptime(date_arg, date_format).date()
+    except:
+        return None
 
 @duration
 @cache

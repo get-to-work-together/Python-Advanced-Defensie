@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Activity Tracker</title>
+</head>
+<body>
+    <ul>
+    {% for activity in data %}
+        <li>
+            {{ ' - '.join(activity) }}
+        </li>
+    {% endfor %}
+    </ul>
+</body>
+</html>

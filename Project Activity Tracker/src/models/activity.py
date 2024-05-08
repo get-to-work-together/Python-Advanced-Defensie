@@ -41,36 +41,39 @@ class Activity:
                  date_updated: date|str = None,
                  id: int = None):
 
-        self._name = name
-        self._note = note
-        self._activity_type = activity_type
-        self._duration = duration
-        self._object_id = object_id
-        self._object_name = object_name
-        self._assigned_to = assigned_to
+        self.name = name
+        self.note = note
+        self.activity_type = activity_type
+        self.duration = duration
+        self.object_id = object_id
+        self.object_name = object_name
+        self.assigned_to = assigned_to
 
         if date_due is not None:
-            self._date_due = to_date(date_due)
+            self.date_due = to_date(date_due)
         elif days_due is not None:
-            self._date_due = to_date(date.today() + timedelta(days = days_due))
+            self.date_due = to_date(date.today() + timedelta(days = days_due))
         else:
-            self._date_due = None
+            self.date_due = None
 
-        self._date_entered = to_date(date_entered)
-        self._status = status
-        self._date_updated = to_date(date_updated)
+        self.date_entered = to_date(date_entered)
+        self.status = status
+        self.date_updated = to_date(date_updated)
 
-        self._id = id
+        self.id = id
 
 
     def info(self):
-        return f'{self._id}: {self._activity_type} - {self._name} | due: {self._date_due} status: {self._status} on {self._date_updated}'
+        return f'{self.id}: {self.activity_type} - {self.name} | due: {self.date_due} status: {self.status} on {self.date_updated}'
 
     def to_dict(self):
-        d = {k[1:]: v if k.startswith('_') else k for k, v in self.__dict__.items()}
-        d['date_due'] = d['date_due'].strftime('%Y-%m-%d')
-        d['date_entered'] = d['date_entered'].strftime('%Y-%m-%d')
-        d['date_updated'] = d['date_updated'].strftime('%Y-%m-%d')
+        d = {k: v for k, v in self.__dict__.items() if not k.startswith('_')}
+        if isinstance(d['date_due'], date):
+            d['date_due'] = d['date_due'].strftime('%Y-%m-%d')
+        if isinstance(d['date_entered'], date):
+            d['date_entered'] = d['date_entered'].strftime('%Y-%m-%d')
+        if isinstance(d['date_updated'], date):
+            d['date_updated'] = d['date_updated'].strftime('%Y-%m-%d')
         return d
 
     @classmethod
@@ -81,20 +84,11 @@ class Activity:
     def from_dict(d):
         return Activity(**d)
 
-    @property
-    def name(self):
-        return self._name
-
-    @name.setter
-    def name(self, value: str):
-        self._name = value.title()
-
-
     def update(self, status, note = None):
-        self._status = status
-        self._date_updated = date.today()
+        self.status = status
+        self.date_updated = date.today()
         if note:
-            self._note += '\n' + note + '\n'
+            self.note += '\n' + note + '\n'
 
 
 if __name__ == '__main__':
