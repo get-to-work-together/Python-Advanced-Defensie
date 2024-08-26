@@ -1,8 +1,21 @@
 from dataclasses import dataclass
 from typing import Self
 
+
 @dataclass
 class Money:
+    """Dit is mijn Money class with different currencies
+
+    >>> Money(30)
+    Money(_amount=30, _currency='EUR', _symbol='€')
+
+    >>> str(Money(30))
+    '€30.00'
+
+    >>> str(Money(30, '$'))
+    '$30.00'
+
+    """
 
     _amount: float
     _currency: str = 'EUR'
@@ -71,6 +84,7 @@ class Money:
 
     @property
     def currency(self) -> str:
+        """Setter for the currency"""
         return self._currency
 
     @property
@@ -81,6 +95,7 @@ class Money:
                 target_currency: str,
                 rate: float = None,
                 target_symbol: str = None) -> Self:
+        """Convert from one currency to another"""
 
         if rate is not None:
             self.rates_from_euro[target_currency] = rate
@@ -97,6 +112,7 @@ class Money:
 
 
 # ----------------------------------------------------
+
 
 if __name__ == '__main__':
 
@@ -124,3 +140,13 @@ if __name__ == '__main__':
     print(bedrag1.convert('USD'))
     print(bedrag1.convert('GBP', 0.8473, '£'))
     print(bedrag1.convert('GBP'))
+
+    actual = bedrag1 == bedrag2
+    expected = False
+    if actual == expected:
+        print('Test OK')
+    else:
+        print('Test error')
+
+    assert bedrag1 == bedrag2, 'Assert Error'
+
