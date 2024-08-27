@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Forecast</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+    <h1>{{header}}</h1>
+    <table>
+        <thead>
+            <td>day</td>
+            <td>temp night</td>
+            <td>temp day</td>
+            <td>weather</td>
+            <td>wind speed</td>
+            <td>direction</td>
+        </thead>
+        {% for day_forecast in data %}
+        <tr>
+            <td>{{ day_forecast.week_day }}</td>
+            <td>{{ day_forecast.temp_night }}</td>
+            <td>{{ day_forecast.temp_day }}</td>
+            <td>{{ day_forecast.weather }}</td>
+            <td>{{ day_forecast.wind_speed }}</td>
+            <td>{{ day_forecast.wind_rose }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

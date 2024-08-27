@@ -22,7 +22,30 @@ class DayForecast:
     def __str__(self):
         return f'{self.week_day} {self.day_formatted} {self.temp_day} {self.temp_night} {self.weather} {self.wind_speed} {self.wind_direction}'
 
+    def as_dict(self):
+        return self.__dict__
 
+    @property
+    def wind_rose(self):
+        if 0 < self.wind_direction <= 22.5:
+            rose = 'N'
+        elif 22.5 < self.wind_direction <= 67.5:
+            rose = 'NE'
+        elif 67.5 < self.wind_direction <= 112.5:
+            rose = 'E'
+        elif 112.5 < self.wind_direction <= 157.5:
+            rose = 'SE'
+        elif 157.5 < self.wind_direction <= 202.5:
+            rose = 'S'
+        elif 202.5 < self.wind_direction <= 247.5:
+            rose = 'SW'
+        elif 247.5 < self.wind_direction <= 292.5:
+            rose = 'W'
+        elif 292.5 < self.wind_direction <= 337.5:
+            rose = 'NW'
+        elif 292.5 < self.wind_direction <= 360:
+            rose = 'N'
+        return rose
 
 def get_data(city, days=14):
 

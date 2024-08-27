@@ -1,8 +1,11 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
 from ..models.openweathermap.get_data import get_formatted_data
 
 
-app = Flask(__name__)
+app = Flask(__name__,
+            template_folder='templates',
+            static_url_path='',
+            static_folder='static')
 
 
 @app.route('/')
@@ -28,3 +31,15 @@ def weather_forecast():
         s += '<br>' + str(day_forecast)
     return s
 
+
+@app.route('/forecast')
+def forecast():
+
+    city = request.args.get('city')
+    if city is None:
+        raise Exception('A city is required')
+    days = request.args.get('days') or 14
+    data = get_formatted_data(city, days)
+    header = f'{days} day weather forecast for {city}'
+
+    return render_template('base.html', header=header, data=data)
