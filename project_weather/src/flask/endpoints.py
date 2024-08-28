@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template
-from ..models.openweathermap.get_data import get_formatted_data
 
+from ..models.openweathermap.get_data import get_formatted_data
+from ..models.openweathermap.analyze import build_chart
 
 app = Flask(__name__,
             template_folder='templates',
@@ -19,7 +20,7 @@ def info():
     return s
 
 
-@app.route('/weather_forecast')
+@app.route('/weather_forecast', methods=['GET', 'POST'])
 def weather_forecast():
     city = request.args.get('city')
     if city is None:
@@ -32,14 +33,17 @@ def weather_forecast():
     return s
 
 
-@app.route('/forecast')
+@app.route('/forecast', methods=['GET', 'POST'])
 def forecast():
 
-    city = request.args.get('city')
-    if city is None:
-        raise Exception('A city is required')
     days = request.args.get('days') or 14
-    data = get_formatted_data(city, days)
-    header = f'{days} day weather forecast for {city}'
+    city = request.args.get('city')
+    if city is None or city == '':
+        header = 'No city specified'
+        data = None
+    else:
+        header = f'{days} day weather forecast for {city}'
+        data = get_formatted_data(city, days)
+        build_chart(data)
 
     return render_template('base.html', header=header, data=data)

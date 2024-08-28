@@ -13,8 +13,8 @@ class DayForecast:
         self.day = datetime.fromtimestamp(self.dt)
         self.day_formatted = self.day.strftime('%d %B')
         self.week_day = self.day.strftime('%a')
-        self.temp_day = day_forecast['temp']['day']
-        self.temp_night = day_forecast['temp']['night']
+        self.temp_day = round(day_forecast['temp']['day'])
+        self.temp_night = round(day_forecast['temp']['night'])
         self.weather = day_forecast['weather'][0]['description']
         self.wind_speed = day_forecast['speed']
         self.wind_direction = day_forecast['deg']

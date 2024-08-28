@@ -3,6 +3,11 @@ body {
     color: #3e4444;
     font-family: sans-serif;
 }
+.col2 {
+    display: inline-block;
+    width: 49%;
+    vertical-align: top;
+}
 table {
     border-collapse: collapse;
 }
@@ -15,4 +20,10 @@ td {
 thead td {
     background-color: #405d27;
     color: #d5e1df;
+}
+form {
+    margin-top: 2em;
+}
+img {
+    height: 20em;
 }
