@@ -1,7 +1,8 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, redirect
 
 from ..models.openweathermap.get_data import get_formatted_data
 from ..models.openweathermap.analyze import build_chart
+from ..models.database.db_sqlite import validate_password
 
 app = Flask(__name__,
             template_folder='templates',
@@ -47,3 +48,15 @@ def forecast():
         build_chart(data)
 
     return render_template('base.html', header=header, data=data)
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == "POST":
+        username = request.form.get('username')
+        password = request.form.get('password')
+        valid_password = validate_password(username, password)
+        if valid_password:
+            return redirect('/forecast')
+
+    return render_template('login.html')
