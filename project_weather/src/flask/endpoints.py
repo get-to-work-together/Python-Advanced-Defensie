@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, redirect
+from flask import Flask, request, render_template, redirect, session
 
 from ..models.openweathermap.get_data import get_formatted_data
 from ..models.openweathermap.analyze import build_chart
@@ -36,6 +36,8 @@ def weather_forecast():
 
 @app.route('/forecast', methods=['GET', 'POST'])
 def forecast():
+    if not session.get('username'):
+        redirect('/login')
 
     days = request.args.get('days') or 14
     city = request.args.get('city')
@@ -57,6 +59,7 @@ def login():
         password = request.form.get('password')
         valid_password = validate_password(username, password)
         if valid_password:
+            session['username'] = username
             return redirect('/forecast')
 
     return render_template('login.html')
