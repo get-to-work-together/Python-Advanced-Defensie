@@ -24,7 +24,7 @@ if __name__ == '__main__':
 
     root = tk.Tk()
 
-    root.geometry('300x200+100+100')  # width x height + x_offset + y_offset
+    root.geometry('300x200')  # width x height + x_offset + y_offset
     root.title('tkinter demo')
 
     app = App(root)

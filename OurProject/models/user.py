@@ -15,16 +15,20 @@ class User:
     InvalidEmailException
     InvalidRoleException
     """
-    def __init__(self, username, name, email, role='standard', password = None):
+    def __init__(self, username, name, email, role='standard', password = None, id = None):
         self._username = username
         self._name = name
         self.email = email
         self.role = role
         if password is not None:
             self.set_password(password)
+        self._id = id
 
     def __str__(self):
-        return f'User: {self._username}'
+        return f'User {self._id}: {self._username} - {self._email}'
+
+    def __repr__(self):
+        return f'User {self._id}: {self._username} - {self._email}'
 
     # getters
 
@@ -54,7 +58,7 @@ class User:
     def email(self, value):
         email_regex = r'\w+@\w+\.\w{2,3}'
         if re.match(email_regex, value):
-            self._name = value
+            self._email = value
         else:
             raise InvalidEmailException(f'Invalid e-mail.')
 
