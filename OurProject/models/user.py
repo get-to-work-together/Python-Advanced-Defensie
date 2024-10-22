@@ -1,15 +1,9 @@
 import hashlib
 import re
 
-available_roles = ['admin', 'standard', 'keyuser']
 
-
-class InvalidEmailException(Exception):
-    pass
-
-
-class InvalidRoleException(Exception):
-    pass
+from models.exceptions import *
+from models.role import available_roles
 
 
 class User:
@@ -79,53 +73,3 @@ class User:
 
     def check_password(self, password):
         return self._password_hash == hashlib.sha256(password.encode()).hexdigest()
-
-
-# -------------------------------
-
-if __name__ == '__main__':
-
-    username = input('Geef gebruikersnaam: ')
-    name = input('Geef naam: ')
-    email = input('Geef email: ')
-    role = input('Geef rol: ')
-    password = input('Geef wachtwoord: ')
-
-    while True:
-        try:
-
-            user1 = User(username = username,
-                         name = name,
-                         email = email,
-                         role = role,
-                         password = password)
-
-            print('User created!')
-
-            print(user1.__dict__)
-
-            break
-
-        except InvalidEmailException as ex:
-            print(ex)
-            email = input('Geef email: ')
-
-        except InvalidRoleException as ex:
-            print(ex)
-            role = input('Geef rol: ')
-
-    user2 = User(username='jan',
-                 name='Jan',
-                 email='dfsjklh',
-                 role='x',
-                 password='abc')
-
-    while True:
-        user_input = input('Geef wachtwoord: ')
-        if user1.check_password(user_input):
-            print('Welkom. That was the correct password.')
-            break
-        else:
-            print('Incorrect')
-
-
