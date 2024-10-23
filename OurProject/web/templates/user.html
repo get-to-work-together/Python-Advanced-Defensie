@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div>
+  <div>
+    <label>Username:</label><input type="text" name="username" value="{{ user.username }}">
+  </div>
+  <div>
+    <label>Name:</label><input type="text" name="name" value="{{ user.name }}">
+  </div>
+  <div>
+    <label>E-mail:</label><input type="text" name="email" value="{{ user.email }}">
+  </div>
+  <div>
+    <label>Role:</label><input type="text" name="role" value="{{ user.role }}">
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<table>
+{% for user in users %}
+    <tr><td><a href="/users/{{ user._id }}">{{ user._id }}</a></td><td>{{ user.username }}</td><td>{{ user.name }}</td><td>{{ user.email }}</td><td>{{ user.role }}</td></tr>
+{% endfor %}
+</table>
+{% endblock %}

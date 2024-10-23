@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        h1 {
+          background-color: darkblue;
+          color: white;
+          padding: 6px;
+        }
+        p {
+           color: red;
+           font-size: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: Arial, sans-serif;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2; /* Light grey for even rows */
+        }
+        tr:nth-child(odd) {
+            background-color: #ffffff; /* White for odd rows */
+        }
+        td, th {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        tr:hover {
+            background-color: #ddd; /* Light grey when hovered */
+        }
+        input {
+            font-family: Arial, sans-serif;
+            padding: 6px;
+            margin: 4px auto;
+            width: 20em;
+        }
+        label {
+            display: inline-block;
+            width: 100px;
+            font-family: Arial, sans-serif;
+            padding: 10px;
+            padding-right: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>{% block title %}{% endblock %}</h1>
+    {% block content %}{% endblock %}
+</body>
+</html>
