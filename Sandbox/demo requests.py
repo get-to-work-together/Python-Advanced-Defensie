@@ -11,6 +11,9 @@ url =  'http://api.openweathermap.org/data/2.5/forecast/daily'\
        '&mode=json'\
       f'&q={city}'
 
+print(url)
+exit()
+
 response = requests.get(url)
 
 if response.status_code == 200:
