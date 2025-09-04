@@ -10,5 +10,5 @@ Session = sessionmaker(bind=engine)
 session = Session()
 
 # Select objects
-for student in session.query(Student).filter(Student.firstname == 'Lara'):
+for student in session.query(Student).filter(Student.firstname == 'Nick'):
     print(student.id, student.firstname, student.lastname)

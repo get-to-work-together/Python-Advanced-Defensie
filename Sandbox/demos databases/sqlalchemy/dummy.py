@@ -11,13 +11,13 @@ Session = sessionmaker(bind=engine)
 session = Session()
 
 # Create objects
-user = Student("james","James","Boogie","MIT")
+user = Student("arthur","Arthur","Boogie","MIT")
 session.add(user)
 
-user = Student("lara","Lara","Miami","UU")
+user = Student("nick","Nick","Miami","UVA")
 session.add(user)
 
-user = Student("eric","Eric","York","Stanford")
+user = Student("peter","Peter","Anema","TU Delft")
 session.add(user)
 
 # commit the record the database

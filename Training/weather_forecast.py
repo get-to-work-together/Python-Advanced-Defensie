@@ -1,3 +1,10 @@
+#!python3
+"""This is my great interactive weather forecasting application.
+
+Using openweathermap.py
+
+@Copywrite Peter Anema 2025-9-1"""
+
 import httpx
 from datetime import datetime
 import json
