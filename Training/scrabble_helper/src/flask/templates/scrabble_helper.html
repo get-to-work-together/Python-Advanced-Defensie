@@ -1,16 +1,31 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div>
+<div class="container">
     <h1>Scrabbel helper</h1>
     <form method="post">
+        <div class="row">
         <label>Regex Template</label>
         <input type="text" name="regex" />
+        </div>
         </br>
+        <div class="row">
         <label>Letters</label>
         <input type="text" name="letters" />
+        </div>
         </br>
+        <div class="row">
         <input type="submit" value="Zoek mogelijke woorden">
+        </div>
     </form>
+</div>
+<hr>
+<div class="container">
+    <h2>Gevonden mogelijkheden:</h2>
+    <ul class="row">
+        {% for word in words %}
+        <li>{{ word }}</li>
+        {% endfor %}
+    </ul>
 </div>
 {% endblock %}
