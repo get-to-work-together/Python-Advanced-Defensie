@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <h1>Scrabbel helper</h1>
+    <form method="post">
+        <label>Regex Template</label>
+        <input type="text" name="regex" />
+        </br>
+        <label>Letters</label>
+        <input type="text" name="letters" />
+        </br>
+        <input type="submit" value="Zoek mogelijke woorden">
+    </form>
+</div>
+{% endblock %}
