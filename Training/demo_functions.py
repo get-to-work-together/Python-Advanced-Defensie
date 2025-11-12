@@ -3,7 +3,7 @@ import re
 import unittest
 
 
-def get_email_addresses(text):
+def get_email_addresses(text: str) -> list:
     """Search and return e-mail adresses from a provided string
 
     >> get_email_addresses("abc@def.nl en other email@tip.com")
@@ -14,7 +14,7 @@ def get_email_addresses(text):
     return matches
 
 
-def cube(x):
+def cube(x: int|float) -> int|float:
     """Calculate power 3 of x
 
     >> cube(2)
@@ -27,7 +27,7 @@ def cube(x):
     return x ** 3
 
 
-def divide(a, b):
+def divide(a: int, b: int) -> float:
     if b == 0:
         raise Exception('Invalid argument value')
     result = a / b
