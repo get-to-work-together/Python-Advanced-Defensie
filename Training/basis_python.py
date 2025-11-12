@@ -95,6 +95,7 @@ def print_regels(naam, n=1):
     print('Hoe gaat het?')
     print('Met mij goed.')
 
+
 def bereken_bmi(gewicht, lengte):
     bmi = gewicht / lengte ** 2
     return bmi
@@ -109,3 +110,10 @@ print_regels('Ozcan', 4)
 
 bmi = bereken_bmi(80, 1.82)
 print( bmi )
+
+
+# Houdt het aantal bij
+aantal_autos = 20   # snake_case
+
+# Waarom?
+aantal_autos += 1

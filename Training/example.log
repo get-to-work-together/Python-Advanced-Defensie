@@ -1,0 +1,18 @@
+DEBUG 2025-11-11T15:05:21.017 - This message should go to the log file
+ERROR 2025-11-11T15:05:21.017 - Watch out!
+INFO 2025-11-11T15:05:21.017 - So should this
+WARNING 2025-11-11T15:05:21.017 - And this, too
+ERROR 2025-11-11T15:05:21.017 - Watch out!
+CRITICAL 2025-11-11T15:05:21.017 - ERROR!!!!!
+DEBUG 2025-11-11T15:05:32.266 - This message should go to the log file
+ERROR 2025-11-11T15:05:32.266 - Watch out!
+INFO 2025-11-11T15:05:32.266 - So should this
+WARNING 2025-11-11T15:05:32.266 - And this, too
+ERROR 2025-11-11T15:05:32.266 - Watch out!
+CRITICAL 2025-11-11T15:05:32.266 - ERROR!!!!!
+DEBUG 2025-11-11T15:05:32.987 - This message should go to the log file
+ERROR 2025-11-11T15:05:32.987 - Watch out!
+INFO 2025-11-11T15:05:32.987 - So should this
+WARNING 2025-11-11T15:05:32.987 - And this, too
+ERROR 2025-11-11T15:05:32.987 - Watch out!
+CRITICAL 2025-11-11T15:05:32.987 - ERROR!!!!!
