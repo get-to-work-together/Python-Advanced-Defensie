@@ -1,7 +1,12 @@
+import os
 import re
 import string
 
-filename = 'data/basiswoorden-gekeurd.txt'
+# filename = '../Datasets/basiswoorden-gekeurd.txt'
+# filename = '/Users/peter/Computrain/_InCompany/Defensie/Python Advanced/Training/scrabble_helper/data/basiswoorden-gekeurd.txt'
+filename = './data/basiswoorden-gekeurd.txt'
+
+print(os.getcwd())
 
 
 def can_be_formed(word: str, letters: str):

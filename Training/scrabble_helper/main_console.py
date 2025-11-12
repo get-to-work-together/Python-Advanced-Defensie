@@ -1,6 +1,5 @@
 from src.models.scrabble_helper import get_matches
 
-
 pattern = input('Geef regular expression patroon: ')
 available_letters = input('Welke letters heb je: ')
 
